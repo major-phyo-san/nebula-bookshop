@@ -1,7 +1,7 @@
 {
-  "name": "julia-framework",
-  "version": "0.0.6",
-  "description": "Julia is an Express based Node.js framework inspired by Laravel for developing MVC style Web apps",
+  "name": "nebula-bookshop",
+  "version": "0.0.0",
+  "description": "Nebula is an E-Book sharing app.",
   "keywords": [
     "node.js",
     "express.js",
@@ -9,7 +9,7 @@
     "node-framework",
     "mvc-pattern"
   ],
-  "homepage": "https://github.com/major-phyo-san/julia-framework#readme",
+  "homepage": "https://github.com/major-phyo-san/nebula-bookshop#readme",
   "license": "Apache-2.0",
   "author": {
     "name": "Phyo Kyaw San (aka Major San)",
