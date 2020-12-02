@@ -9,7 +9,7 @@ var stringGenerator = require('../utilities/randomStringGenerator');
 // defines root for the uploaded files (storage root)
 const baseDir = './storage/app';
 
-var makeFileStorage = function(dir){
+module.exports.makeMulterStorage = function(dir){
     // full directory to the storage root plus user provided 'dir' directory
     var fullDir = path.join(baseDir, dir);
 
@@ -33,5 +33,3 @@ var makeFileStorage = function(dir){
     
     return storage;
 }
-
-module.exports = makeFileStorage;
