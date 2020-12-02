@@ -1,0 +1,17 @@
+<h1>Categories</h1>
+<p>Edit a category</p>
+{{> sidebar}}
+
+<form action="/categories/{{category.id}}" id="add-category" method="POST">
+    <input type="hidden" name="_csrf" value="{{csrfToken}}"/>
+    <input type="hidden" name="_method" value="PUT"/>
+    <label for="name">Input name</label>
+    <input type="text" id="name" name="name" value="{{category.name}}"/>
+    <br>
+
+    <label for="description">Input description</label>
+    <input type="text" id="description" name="description" value="{{category.description}}"/>
+    <br>
+
+    <button type="submit">Edit</button>
+</form>

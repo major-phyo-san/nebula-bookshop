@@ -1,0 +1,28 @@
+<h1>Categories</h1>
+<p>Listing all Categories</p>
+{{> sidebar}}
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>        
+    </thead>
+    <tbody>
+        {{#each categories}}
+        <tr>
+            <td> {{name}} </td>
+            <td> {{description}} </td>
+            <td> <a href="/categories/{{id}}/edit">Edit</a> </td>
+            <td> <a href="/categories/{{id}}/delete">Delete</a> </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+<a href="/categories/new">Want to add a new category?</a>
+
+<script src="/public/javascripts/categories.js"></script>

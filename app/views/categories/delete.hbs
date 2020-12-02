@@ -1,0 +1,10 @@
+<h1>Categories</h1>
+<p>Delete a category</p>
+{{> sidebar}}
+
+<p>Do you really want to delete this {{category.name}} category?</p>
+<form action="/categories/{{category.id}}" id="add-category" method="POST">
+    <input type="hidden" name="_csrf" value="{{csrfToken}}"/>
+    <input type="hidden" name="_method" value="DELETE"/>
+    <button type="submit">Yes, delete it</button>
+</form>
