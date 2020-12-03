@@ -2,7 +2,7 @@
 <p>Add new category</p>
 {{> sidebar}}
 
-<form action="/categories" id="add-category" method="POST">
+<form action="/categories" id="add-category" class="form crud-forms" method="POST">
     <input type="hidden" name="_csrf" value="{{csrfToken}}"/>
 
     <label for="name">Input name</label>
@@ -13,6 +13,7 @@
     <input type="text" id="description" name="description" value=""/>
     <br>    
 </form>
+
 <button onclick="addNewCategory()">Submit</button>
 <br>
 
