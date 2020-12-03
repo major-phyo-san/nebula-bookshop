@@ -1,13 +1,13 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var categorySchema = mongoose.Schema({
+var subcategorySchema = mongoose.Schema({
     name: String,
     description: String,
-    subcategories: [{
+    category: {
         type: Schema.Types.ObjectId,
-        ref: 'Subcategory'
-    }]
+        ref: 'Category'
+    }
 });
 
-module.exports = categorySchema;
+module.exports = subcategorySchema;

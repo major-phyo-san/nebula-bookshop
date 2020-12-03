@@ -15,8 +15,13 @@ var serverOptions = {
 
 const connection = database.makeMongoDBConnection(optionalConnectionString, serverOptions);
 
+var renderContext = {
+    appName: envs.NODE_NAME,
+};
+
 module.exports.getAllCategories = function(req, res){
-    
+    renderContext['csrfToken'] = req.csrfToken();
+
     Category.find((err, categories) => {
         var categories = categories.map((category) => {
             return {
@@ -25,16 +30,22 @@ module.exports.getAllCategories = function(req, res){
                 description: category.description
             }
         });
-        res.render('categories/index', { appName: envs.NODE_NAME, csrfToken: req.csrfToken(), categories: categories });
+        renderContext['categories'] = categories;
+        
+        res.render('categories/index', renderContext);
     });
     
 }
 
-module.exports.showCreateForm = function(req, res){    
-    res.render('categories/create', {csrfToken: req.csrfToken(), appName: envs.NODE_NAME});
+module.exports.showCreateForm = function(req, res){
+    renderContext['csrfToken'] = req.csrfToken();
+
+    res.render('categories/create', renderContext);
 }
 
-module.exports.addNewCategory = function(req, res){ 
+module.exports.addNewCategory = function(req, res){
+    renderContext['csrfToken'] = req.csrfToken();
+
     var category = new Category({
         name: req.body.name,
         description: req.body.description
@@ -53,13 +64,17 @@ module.exports.addNewCategory = function(req, res){
 }
 
 module.exports.showEditForm = function(req, res){
+    renderContext['csrfToken'] = req.csrfToken();
+
     Category.findById(req.params.catId, (err, category)=>{
         var category = {
             id: category._id,
             name: category.name,
             description: category.description
         }
-        res.render('categories/edit', { appName: envs.NODE_NAME, csrfToken: req.csrfToken(), category: category });
+        renderContext['category'] = category;
+
+        res.render('categories/edit', renderContext);
     });
 }
 
@@ -72,14 +87,18 @@ module.exports.editCategory = function(req, res){
     });
 }
 
-module.exports.showDeleteForm = function(req, res){    
+module.exports.showDeleteForm = function(req, res){
+    renderContext['csrfToken'] = req.csrfToken();
+
     Category.findById(req.params.catId, (err, category)=>{
         var category = {
             id: category._id,
             name: category.name,
             description: category.description
         }
-        res.render('categories/delete', { appName: envs.NODE_NAME, csrfToken: req.csrfToken(), category: category });
+        renderContext['category'] = category;
+
+        res.render('categories/delete', renderContext);
     });
     
 }
