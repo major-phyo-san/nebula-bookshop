@@ -1,6 +1,7 @@
 var envs = require('../../config/server-env');
 var database = require('../../config/database');
 var Category = require('../models/Category');
+var Subcategory = require('../models/Subcategory');
 
 var optionalConnectionString = {
     authSource: 'admin',
@@ -115,6 +116,9 @@ module.exports.deleteCategory = function(req, res){
         if(err){
             console.log(err);
         }
+        Subcategory.deleteMany({category: req.params.catId}, (err)=>{
+            if(err) console.log(err);
+        });
         res.redirect('/categories');
     });
 }
