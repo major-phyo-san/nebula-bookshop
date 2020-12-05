@@ -27,11 +27,3 @@ function addNewCategory() {
     
     req.send(params);
 }
-
-function deleteCategory(){
-   
-}
-
-function editCategory(){
-   
-}
