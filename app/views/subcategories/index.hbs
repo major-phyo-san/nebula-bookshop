@@ -1,0 +1,28 @@
+<h1>Subcategories</h1>
+<p>Listing all Subcategories of a Category</p>
+{{> sidebar}}
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>        
+    </thead>
+    <tbody>
+        {{#each subcategories}}
+        <tr>
+            <td> {{name}} </td>
+            <td> {{description}} </td>
+            <td> <a href="/subcategories/{{id}}/edit">Edit</a> </td>
+            <td> <a href="/subcategories/{{id}}/delete">Delete</a> </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+<a href="/subcategories/new">Want to add a new sub-category?</a>
+
+<script src="/public/javascripts/subcategories.js"></script>
