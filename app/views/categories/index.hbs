@@ -7,6 +7,7 @@
         <tr>
             <th>Name</th>
             <th>Description</th>
+            <th>Sub-Categories</th>
             <th>Edit</th>
             <th>Delete</th>
         </tr>        
@@ -16,6 +17,7 @@
         <tr>
             <td> {{name}} </td>
             <td> {{description}} </td>
+            <td> <a href="/categories/{{id}}/subcategories"> {{name}} </a></td>
             <td> <a href="/categories/{{id}}/edit">Edit</a> </td>
             <td> <a href="/categories/{{id}}/delete">Delete</a> </td>
         </tr>
