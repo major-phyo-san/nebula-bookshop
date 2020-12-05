@@ -45,11 +45,13 @@ module.exports.showCreateForm = function(req, res){
 
 module.exports.addNewCategory = function(req, res){
     renderContext['csrfToken'] = req.csrfToken();
-
-    var category = new Category({
+    
+    var createData = {
         name: req.body.name,
         description: req.body.description
-    });
+    };
+
+    var category = new Category(createData);
     category.save((err, data)=>{
         if(err){
             console.log('error saving');
@@ -79,7 +81,12 @@ module.exports.showEditForm = function(req, res){
 }
 
 module.exports.editCategory = function(req, res){
-    Category.findByIdAndUpdate(req.params.catId, {name: req.body.name, description: req.body.description}, (err)=>{
+    updateData = {
+        name: req.body.name,
+        description: req.body.description
+    };
+
+    Category.findByIdAndUpdate(req.params.catId, updateData, (err)=>{
         if(err){
             console.log(err);
         }
