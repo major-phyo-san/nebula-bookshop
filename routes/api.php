@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\MGMT\AdminAuthController;
+use App\Http\Controllers\API\App\Auth\UserAuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,4 +31,13 @@ Route::group(['prefix' => 'mgmt'], function(){
         });
         Route::post('/logout', [AdminAuthController::class, 'logoutAdmin']);
     });
+});
+
+Route::post('/login', [UserAuthController::class, 'loginUser']);
+
+Route::group(['middleware' => 'auth:api'], function(){
+    Route::get('/users', function(){
+        return response()->json(['data' => 'nope']);
+    });
+    Route::post('/logout', [UserAuthController::class, 'logoutUser']);
 });
