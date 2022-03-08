@@ -4,9 +4,7 @@ namespace App\Http\Controllers\WEB\MGMT;
 
 use App\Http\Controllers\Controller;
 
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Extensions\Auth\AuthUserExtension;
 use App\Models\Admin;
 
